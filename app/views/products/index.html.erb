@@ -1,0 +1,21 @@
+<h1>All Listed Products</h1> 
+
+<table class="table common-table border radius-10" style="border-style: double;">
+  <tr>
+    <th>Name</th>
+    <th>Content</th>
+  </tr>
+
+<% @products.each do|pr| %>
+  <tr>
+    <div class="pro-img-text">
+    <td class="text-center"><%=pr.name %></td>
+    <td class="text-right " style="padding: 20px;"><%=pr.description %></td>
+    </div>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New post', new_product_path %>
