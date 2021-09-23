@@ -1,0 +1,45 @@
+<div class="inner-sec">
+ 
+   <div class="col-md-8">
+     <h1 class="dark" style="font-size: 20px">Welcome <%=current_user.present? && current_user.name.present? ? current_user.name.partition(" ").first.titleize : ''%> !</h1>
+    <% if current_user.user_type_id == 1 %>
+
+     <div class = "container">
+     <p style="font-size: 20px;color: black;" class="dark head-lg head-xl text-center" align="text-right">Bestseller</p><h6 style="color: purple;">where products matters</h6><%= image_pack_tag "media/images/logo.jpeg", alt:"Ellisting", height:"48", width:"40", class:"img-fluid" %>
+   </div>
+   </div>
+    <strong style="float: right !important;"> Total Products: <%= @products.all.count %></strong><br><br>
+
+   <h3 class="dark " style="color: #808080">All Listed Products</h3>  
+        <div style="overflow-x: auto;">
+		<table class="table common-table border radius-10" style="box-sizing: border-box;">
+		  <tr>
+		    <th>Name</th>
+		    <th>Content</th>
+		    <th>Image</th>
+		    <th>Color</th>
+		    <th>Price</th>
+		    <th>Action</th>
+		  </tr>
+
+		<% @products.each do|pr| %>
+		  <tr>
+		    <div class="pro-img-text">
+		    <td><%=pr.name.present? ? pr.name : "N-A" %> </td>
+		    <td><%=pr.description.present? ? pr.description : "N-A" %> </td>
+		     <% if pr.image.present? %>
+		    <td><%= image_tag pr.image , width: "280px" %> </td>
+		    <% else %>
+		    <td>N-A</td>
+		    <% end %>
+		    </div>
+		    <td><%=pr.color.present? ? pr.color : "N-A" %> </td>
+		    <td><%=pr.price.present? ? pr.price : "N-A" %> </td>
+		    <td><%= link_to "Edit" , edit_product_path(pr.id) %></td>
+		    <td><%= link_to "Delete", product_path(pr.id), method: :delete , data: { confirm: "Are you sure?" }%></td>
+		  </tr>
+		<% end %>
+		</table>
+     </div>
+     <%  end %>
+</div> 

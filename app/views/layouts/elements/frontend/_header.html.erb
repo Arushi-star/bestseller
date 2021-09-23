@@ -1,7 +1,7 @@
  <!-- A grey horizontal navbar that becomes vertical on small screens -->
 <ul> 
   <% if user_signed_in? %> 
-      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Home", root_path %></li> 
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#about">About</a></li>
@@ -13,6 +13,8 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="#about">About</a></li>
       <li><%= link_to "Register", new_user_registration_path , :class => 'register_popup'%></li>
-      <li><%= link_to "Login", new_user_session_path ,:class => 'login_popup' %></li>
+      <li><%= link_to "Login", new_user_session_path  %>
+      </li>
   <% end %>
 </ul> 
+

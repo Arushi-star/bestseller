@@ -1,4 +1,4 @@
-<h1>All Listed Products</h1> 
+<h1>All Listed Products</h1>  
 
 <table class="table common-table border radius-10" style="border-style: double;">
   <tr>
@@ -9,8 +9,8 @@
 <% @products.each do|pr| %>
   <tr>
     <div class="pro-img-text">
-    <td class="text-center"><%=pr.name %></td>
-    <td class="text-right " style="padding: 20px;"><%=pr.description %></td>
+    <td><%=pr.name.present? ? pr.name : "N-A" %> </td>
+    
     </div>
   </tr>
 <% end %>

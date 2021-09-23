@@ -1,0 +1,10 @@
+<h1 style="font-size: 20px; color:black;">Edit Product</h1>
+
+<%= form_for(@product, html:{id: 'edit_product', :autocomplete => 'off' , method: :patch,remote: true}) do |f| %>
+  <%= f.hidden_field :user_id,value: current_user.id %>
+   <%= render(:partial => 'form',locals: {f: f}) %>
+  <p>
+    <%= f.submit "submit"%>
+  </p>
+  <% end %>
+

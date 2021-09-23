@@ -2,6 +2,14 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html:{id: 'new_user', :autocomplete => 'off' }) do |f| %> 
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <strong style="color: black">Please select the user type</strong>
+  <!-- <button id="set_seller" value="1">Seller</button> <button id="set_buyer" value="2">Buyer</button> -->
+  <div class="">
+   <input type="radio" value="1" name="user_type"> <label>Seller</label>
+  <input type="radio" value="2" name="user_type"><label>Buyer</label>
+  </div>
+
+  <%= f.hidden_field :user_type_id, value: 1 %>
    <div class="field">
     <%= f.label :name %><span class="required">*</span><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
@@ -29,9 +37,25 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div><br>
 
-  <div class="actions" style="color: red; font-size: 20px;text-align: center;">
+  <div class="actions" style="color: red; font-size: 20px;">
     <%= f.submit "Submit" %>
   </div>
 <% end %>
 
 <%#= render "devise/shared/links" %>
+<!-- script-->
+<script>
+$('input[type=radio]').click(function(){
+    if (this.previous) {
+        this.checked = false;
+    }
+    this.previous = this.checked;
+});
+</script>
+<script >
+ $(document).ready(function() {
+            $("#set_buyer").click(function() {
+                $("checkbox").change();
+            });
+        });
+    </script>
