@@ -1,4 +1,5 @@
-class ProductsController < ApplicationController 
+class ProductsController < ApplicationController
+   before_action :authenticate_user_presence! 
 
   def index 
   end
@@ -18,14 +19,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-
-    @product = Product.find_by_id(params[:id])
-     if @product.present?
-       redirect_to product_path(:id)
-     else 
-       flash[:alert] = "Something found Wrong"
-       render 'show'
-     end
   end  
 
   def edit

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   	before_action :configure_permitted_parameters, if: :devise_controller?
 
 	def authenticate_user_presence!
-	   redirect_to root_path(signin:true), notice: "You must sigin " unless user_signed_in?
+	   redirect_to root_path, notice: "You must sigin " unless user_signed_in?
     end
 
 

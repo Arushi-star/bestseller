@@ -10,6 +10,10 @@ $(document).on('turbolinks:load', function() {
          return this.optional(element) || pattern.test(value);
    },'Please enter valid email');
 
+    $.validator.addMethod("notEqual", function(value, element, param) {
+    return this.optional(element) || value != param;
+  }, "Please specify a different (non-default) value");
+
    $(document).find('form#new_product').validate({
       
         rules: {
@@ -87,31 +91,41 @@ $(document).on('turbolinks:load', function() {
       'user[phonenumber]':{
         required:true,
         minlength: 10,
-        maxlength:10
+        maxlength:10,
       },
       'user[password]':{
         required: true,
+      },
+      'user[password_confirmation]':{
+        required: true,
+        equalTo: '#user_password'
       },
 
     },
     messages:{
       'user[name]':{
-        required: 'please enter name',
-        textOnly: 'please enter characters only'
+        required: 'Please enter name',
+        textOnly: 'Please enter characters only'
       },
       'user[email]':{
-        required: 'please enter email',
+        required: 'Please enter email',
         remote: "Email already exits",
         trimFunc: "Please enter valid email"
 
       },
      
       'user[phonenumber]':{
-        required: 'please enter number',
+        required: 'Please enter number',
+        minlength: 'Phonenumber must be of 10 digits',
+        maxlength: 'Phonenumber does not exceed more than 10 digits',
       },
       'user[password]':{
-        required: 'please enter password',
+        required: 'Please enter password',
 
+      },
+      'user[password_confirmation]':{
+        required: 'Please confirm your password',
+        equalTo:  ' Password  does not match'
       },
     }
   })
