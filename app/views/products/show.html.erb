@@ -1,18 +1,71 @@
-<h1> Show Page</h1>
+<h1 class="dark " style="font-size: 20px;"> Show Details</h1>
 
-    <div class="row">
-	    <div class="col-sm-3 form-group">
-	      <b> Name</b>
-	    </div>
-	    <div class="col-sm-9 form-group">
-	      <%= @product.name.present? ? @product.name.capitalize : 'N-A' %>
-	    </div>
-	  </div>
-   <div class="row">
-	    <div class="col-sm-3 form-group">
-	      <b> Description</b>
-	    </div>
-	    <div class="col-sm-9 form-group">
-	      <%= @product.description.present? ? @product.description : 'N-A' %>
-	    </div>
-  </div>
+<% if current_user.present? %> 
+    <div class="col-sm-9"></br>
+	 <div class="row">
+		<div class="col-sm-3 form-group">
+		  <b>Name</b>
+		</div>
+		<div class="col-sm-9 form-group">
+		  <%= @product.name.present? ? @product.name.capitalize : 'N-A' %>
+		</div>
+     </div>
+
+     <div class="row">
+		<div class="col-sm-3 form-group">
+		  <b>Description</b>
+		</div>
+		<div class="col-sm-9 form-group">
+		  <%= @product.description.present? ? @product.description.capitalize : 'N-A' %>
+		</div>
+     </div>
+
+     <div class="row">
+		<div class="col-sm-3 form-group">
+		  <b>Price</b>
+		</div>
+		<div class="col-sm-9 form-group">
+		  <%= @product.price.present? ? @product.price : 'N-A' %>
+		</div>
+     </div>
+
+      <div class="row">
+		<div class="col-sm-3 form-group">
+		  <b>Color</b>
+		</div>
+		<div class="col-sm-9 form-group">
+		  <%= @product.color.present? ? @product.color.capitalize : 'N-A' %>
+		</div>
+     </div>
+
+     <div class="row">
+		<div class="col-sm-3 form-group">
+		  <b>Selected Category</b>
+		</div>
+		<div class="col-sm-9 form-group">
+		  <%= @product.category_types.present? ? @product.category_types.capitalize : 'N-A' %>
+		</div>
+     </div>
+
+
+      <div class="row">
+		<div class="col-sm-3 form-group">
+		  <b>Product Image</b>
+		</div>
+         <div class="row " style="margin-left: 20px; float:left ;display:block >
+           <div class="column">
+            <div class="list-box property-row position-relative">
+             <div class="position-relative mb-3 exclusive-img exclusive-small" >
+				 <% if @product.images.attached? %>
+				 <% @product.images.each do |image|%>
+				 <%= image_tag image ,width: "300px" %>
+				 <% end %>
+				 <% end %>
+		    </div>
+		   </div>
+		  </div>
+		</div>
+     </div>
+	
+  
+<% end %>

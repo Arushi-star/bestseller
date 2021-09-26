@@ -32,8 +32,16 @@ $(document).on('turbolinks:load', function() {
             'product[color]':{
               required: true,
               minlength: 2,
-              maxlength:10
-            }
+              maxlength:10,
+            },
+
+            'product[price]':{
+              required: true,
+            },
+
+            'product[category_types]':{
+              required: true,
+            },
             
         },
         messages: {
@@ -41,12 +49,25 @@ $(document).on('turbolinks:load', function() {
                 required:'Please enter Name', 
                 minlength: 'Name must be more than 2 characters',
                 maxlength: 'Name must no exceed 50 characters',
-                 textOnly: 'please enter characters only',
+                textOnly: 'please enter characters only',
             },
             'product[description]': {
                 required: 'Please enter text',
                 minlength: 'Text must be more than 2 characters',
                 maxlength: 'Text must no exceed 100 characters', 
+            },
+
+            'product[color]':{
+              required: 'Please enter select color',
+              minlength: 'Color must be more than 2 characters',
+              maxlength: 'Color must not exceed 10 characters',
+            },
+
+            'product[price]':{
+              required: 'Please enter the price',
+            },
+            'product[category_types]':{
+              required: 'Please select the category',
             },
         },
     })
@@ -100,6 +121,10 @@ $(document).on('turbolinks:load', function() {
         required: true,
         equalTo: '#user_password'
       },
+       'user[user_type_id]':{
+        required: true,
+      }
+
 
     },
     messages:{
@@ -110,7 +135,7 @@ $(document).on('turbolinks:load', function() {
       'user[email]':{
         required: 'Please enter email',
         remote: "Email already exits",
-        trimFunc: "Please enter valid email"
+        trimFunc: "Please enter valid email" 
 
       },
      
@@ -125,8 +150,12 @@ $(document).on('turbolinks:load', function() {
       },
       'user[password_confirmation]':{
         required: 'Please confirm your password',
-        equalTo:  ' Password  does not match'
+        equalTo:  'Password  does not match',
       },
+      'user[user_type_id]':{
+        required: 'Please select the user type',
+      }
+       
     }
   })
 
@@ -137,7 +166,7 @@ $(document).on('turbolinks:load', function() {
  //      type:'GET',
  //      url:'/user/sign_in',
  //      success:function(response){
- //        //debugger
+ //        //debugger 
  //        //I assume you want to do something on controller action execution success?
  //        //debugger
  //        if(response["status"]){

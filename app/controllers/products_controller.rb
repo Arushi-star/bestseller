@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-   before_action :authenticate_user_presence! 
+   before_action :authenticate_user_presence!   
 
   def index 
   end
@@ -19,6 +19,12 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find_by_id(params[:id])
+     if @product.present?
+     else
+       redirect_to dashboard_path
+       flash[:alert] = "Please fix the error!"
+     end    
   end  
 
   def edit
@@ -50,6 +56,6 @@ class ProductsController < ApplicationController
 
   private
    def product_params
-   	 params.require(:product).permit(:id, :name,:description,:user_id,:image,:color,:price)
+   	 params.require(:product).permit(:id, :name,:description,:user_id,:color,:price, :category_types,images:[])
    end
 end

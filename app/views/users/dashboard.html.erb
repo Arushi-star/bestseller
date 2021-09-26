@@ -25,15 +25,12 @@
 
 		<% @products.each do|pr| %>
 		  <tr>
-		    <div class="pro-img-text">
+		    
 		    <td><%=pr.name.present? ? pr.name : "N-A" %> </td>
 		    <td><%=pr.description.present? ? pr.description : "N-A" %> </td>
-		     <% if pr.image.present? %>
-		    <td><%= image_tag pr.image , width: "280px" %> </td>
-		    <% else %>
-		    <td>N-A</td>
+         <% if pr.images.attached? %>
+		    <td><%= image_tag pr.images.first , width: "280px" %> </td>
 		    <% end %>
-		    </div>
 		    <td><%=pr.color.present? ? pr.color : "N-A" %> </td>
 		    <td><%=pr.price.present? ? pr.price : "N-A" %> </td>
 		    <% if can? :update , pr %>

@@ -1,5 +1,8 @@
 class Product < ApplicationRecord
-	belongs_to :user
+	belongs_to :user 
+ 
+	has_many_attached :images, dependent: :destroy
 
-	has_one_attached :image, dependent: :destroy
+	enum category_types: { clothing: 0 , mobile: 1 , bakery: 3 , electronics: 4 , furniture: 5 }
 end
+ 
