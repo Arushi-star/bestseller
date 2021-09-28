@@ -15,10 +15,14 @@ ActiveStorage.start()
 import jquery from 'jquery';
 window.$ = window.jquery = jquery
 import { createPopper } from '@popperjs/core';
+
+
 //scss
 //import 'bootstrap';
 import "../css/frontend/common.scss";
+import "@fortawesome/fontawesome-free/js/all";
 
 require("bootstrap/dist/js/bootstrap")
 require("jquery-validation")
 require("./js/common")
+require("./js/product")

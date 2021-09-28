@@ -1,4 +1,4 @@
- <div class="form-group "> 
+ <div class="form-group ">  
     <%= f.label :name %><span class="required">*</span>
     <%= f.text_field :name ,:placeholder => :name  %>   
   </div>
@@ -10,23 +10,23 @@
 
   <div class="form-group">
     <%= f.label :images %><span class="required">*</span>
-    <%= f.file_field :images , multiple: true ,:placeholder => :text %>
+    <%= f.file_field :images , multiple: true ,:placeholder => :select %>
   </div>
 
   <div class="form-group">
     <%= f.label :color %><span class="required">*</span>
-    <%= f.text_field :color ,:placeholder => :text %> 
+    <%= f.text_field :color ,:placeholder => :color %> 
   </div>
 
   <div class="form-group">
     <%= f.label :price %><span class="required">*</span>
-    <%= f.text_field :price ,:placeholder => :text %>
+    <%= f.text_field :price ,:placeholder => :price %>
   </div>
 
   <div class="form-group">
     <%= f.label :Category %>
     <%= f.select :category_types, options_for_select(Product.category_types.map {|key, value| [key.titleize, Product.category_types.key(value)]}, @product.category_types) %>
   </div>
-
+ 
 
  

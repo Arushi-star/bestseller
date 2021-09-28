@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+ 
     devise_for :users,
   :path_names => {
     :sign_up => 'sign_up',
@@ -13,7 +14,9 @@ Rails.application.routes.draw do
   root to: "homes#index"
 	resources :products
 	get "user/dashboard" => "users#dashboard" , as: 'dashboard'
+  get "products/like" => "products#like", as: 'like'
   post "/products/new" => "products#create" , as: :save_product
   patch "/products/edit/id" => "products#update" , as: :update_product
+  get 'favourites/update' => "favourites#update"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+end 

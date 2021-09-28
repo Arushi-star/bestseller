@@ -12,5 +12,11 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
 	    dashboard_path
-	  end  
+	  end 
+
+    # def favourite_text(product_id)
+    #   favourite_text = current_user.favourites.where(product_id: product_id ).present? ?  "Unfavourite" : "favourite"
+    # end 
+
+    # helper_method :favourite_text(product_id)
 end

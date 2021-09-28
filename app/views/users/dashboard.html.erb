@@ -1,8 +1,8 @@
 <div class="inner-sec">
- 
+  <% if current_user.user_type_id == 1%>
    <div class="col-md-8">
      <h1 class="dark" style="font-size: 20px">Welcome <%=current_user.present? && current_user.name.present? ? current_user.name.partition(" ").first.titleize : ''%> !</h1>
-    <% if current_user.user_type_id == 1%>
+    
 
      <div class = "container">
      <p style="font-size: 20px;color: black;" class="dark head-lg head-xl text-center" align="text-right">Bestseller</p><h6 style="color: purple;">where products matters</h6><%= image_pack_tag "media/images/logo.jpeg", alt:"", height:"48", width:"40", class:"img-fluid" %>
@@ -52,32 +52,39 @@
        <h1>Welcome to the Shop  <%=current_user.present? && current_user.name.present? ? current_user.name.partition(" ").first.titleize : ''%> !</h1>
          <div class = "container">
         <p style="font-size: 20px;color: black;" class="dark head-lg head-xl text-center" align="text-right">Bestseller</p><h6 style="color: purple;">where products matters</h6><%= image_pack_tag "media/images/logo.jpeg", alt:"", height:"48", width:"40", class:"img-fluid" %>
-        </div>
-     </div>
+        </div><br><br>
+     </div>  
         <div class="row" style=" padding-left: 200px,box-sizing: border-box;">
          <% if @products.present? %>
+          <div class="container">
            <% @products.each do|pr| %>
+            
+           <div class="container">
             <div class="col-md-4">
                    <div class="list-out p-0">
                      <div class="list-box property-row position-relative">
                        <div class="position-relative mb-3 exclusive-img exclusive-small" >
-                         <% if pr.present? && pr.image.present? %>
-                           <%=image_tag pr.image, width:"360", height:"243", alt:"Property Images", class:"radius-10"%></a>
-                         <%else%>
-                           <%= image_pack_tag "media/images/dummy-property.png", width:"360", height:"243", alt:"Property Images", class:"radius-10" %></a>
+                         <% if pr.present? && pr.images.attached? %>
+                           <%= link_to image_tag pr.images.first ,width:"260", height:"180", alt:"Property Images", class:"radius-10"%></a>
                          <%end%>
+                
                          <%#= image_pack_tag "media/images/dummy1.png", width:"360", height:"243", alt:"Property Images", class:"radius-10" %>
                        </div>
-              
+                       <div class="">
+                         <i class="fas fa-thumbs-up"></i><%= @likes %>
+                        <%= link_to favourite_text(pr.id), favourites_update_path(product_id: pr.id) , id: 'favourite_link', remote: true%>
+                        </div>
                        <div class="d-flex justify-content-between align-items-center mb-2">
-                         <div class=" blue-color p-bold"><%=pr.present? && pr.price.present? ? pr.price : 0%></div>
+                         <div class=" blue-color p-bold"><%=pr.present? && pr.price.present? ? currency_format(pr.price) : ''%></div>
                        </div>
                        <h3 class="head-sm p-bold text-truncate"><%=pr.name.present? ? pr.name.capitalize : ''%></h3>
                        <p class="position-relative my-2 text-truncate"><span class="icon loc-icon mr-2"></span><%=pr.color.present? ? pr.color : ''%> <%=pr.description.present? ? pr.description.capitalize : ''%> <%#=rcpr.city.present? ? ", #{rcpr.city}" : '' %></p>
                      </div>
                    </div>
                  </div>
+                </div>
             <% end %>
+            </div>
             <%end %>
    <% end %>  
 </div> 

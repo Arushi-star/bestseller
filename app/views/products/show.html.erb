@@ -25,7 +25,7 @@
 		  <b>Price</b>
 		</div>
 		<div class="col-sm-9 form-group">
-		  <%= @product.price.present? ? @product.price : 'N-A' %>
+		  <%= @product.price.present? ? currency_format(@product.price) : 'N-A' %>
 		</div>
      </div>
 

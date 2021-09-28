@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_26_140150) do
+ActiveRecord::Schema.define(version: 2021_09_28_085429) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2021_09_26_140150) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "favourites", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_favourites_on_product_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
   create_table "products", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -48,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_09_26_140150) do
     t.integer "user_id"
     t.string "color"
     t.decimal "price", precision: 10
-    t.integer "category_type", default: 0
     t.integer "category_types", default: 0
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -81,4 +89,6 @@ ActiveRecord::Schema.define(version: 2021_09_26_140150) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favourites", "products"
+  add_foreign_key "favourites", "users"
 end

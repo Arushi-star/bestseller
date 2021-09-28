@@ -53,7 +53,27 @@ class ProductsController < ApplicationController
      end 
   end 
 
+  def like
+    if current_user.present?
+      like = LikeDislikeProduct.where("user_id=? && product_id=?", current_user.id, params[:product_id])
+      if like.present?
+        like.like_dislike_status == true ? like.update(like_dislike_status: false) : like.update(like_dislike_status: true)
+        @favourite_exists = false
+      else
+         LikeDislikeProduct.create(user_id:current_user.id,product_id: params[:product_id],like_dislike_status: true)
+         @favourite_exists = true
+      end
+    else
+      flash[:alert] = "Something went wrong"
+    end
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
+  end
+ 
 
+  
   private
    def product_params
    	 params.require(:product).permit(:id, :name,:description,:user_id,:color,:price, :category_types,images:[])
