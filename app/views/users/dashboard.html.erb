@@ -15,7 +15,7 @@
 		<table class="table common-table border radius-10" style="box-sizing: border-box;">
 		  <tr>
 		    <th>Name</th>
-		    <th>Content</th>
+		    <th>Content</th> 
 		    <th>Image</th>
 		    <th>Color</th>
 		    <th>Price</th>
@@ -32,7 +32,7 @@
 		    <td><%= image_tag pr.images.first , width: "280px" %> </td>
 		    <% end %>
 		    <td><%=pr.color.present? ? pr.color : "N-A" %> </td>
-		    <td><%=pr.price.present? ? pr.price : "N-A" %> </td>
+		    <td><%=pr.price.present? ? currency_format(pr.price) : "N-A" %> </td>
 		    <% if can? :update , pr %>
 		    <td><%= link_to "Edit" , edit_product_path(pr.id) %></td>
 		    <% end %>
@@ -55,7 +55,7 @@
         </div><br><br>
      </div>  
         <div class="row" style=" padding-left: 200px,box-sizing: border-box;">
-         <% if @products.present? %>
+         <% if @products.present? %> 
           <div class="container">
            <% @products.each do|pr| %>
             
@@ -65,13 +65,14 @@
                      <div class="list-box property-row position-relative">
                        <div class="position-relative mb-3 exclusive-img exclusive-small" >
                          <% if pr.present? && pr.images.attached? %>
-                           <%= link_to image_tag pr.images.first ,width:"260", height:"180", alt:"Property Images", class:"radius-10"%></a>
+                           <a href="<%=favourites_details_path(id: (pr.id))%>"><%= image_tag pr.images.first ,width:"260", height:"180", alt:"Property Images", class:"radius-10" %></a>
+                          <%else%>
+                           <a href="<%=favourites_details_path(id: (pr.id))%>"><%= image_pack_tag "media/images/dummy-product_2.png", width:"260", height:"180", alt:"Property Images", class:"radius-10" %></a> 
                          <%end%>
                 
                          <%#= image_pack_tag "media/images/dummy1.png", width:"360", height:"243", alt:"Property Images", class:"radius-10" %>
                        </div>
                        <div class="">
-                         <i class="fas fa-thumbs-up"></i><%= @likes %>
                         <%= link_to favourite_text(pr.id), favourites_update_path(product_id: pr.id) , id: 'favourite_link', remote: true%>
                         </div>
                        <div class="d-flex justify-content-between align-items-center mb-2">

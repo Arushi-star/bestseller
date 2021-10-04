@@ -71,6 +71,9 @@ class ProductsController < ApplicationController
       format.js{}
     end
   end
+
+  def product_payment
+  end
  
 
   

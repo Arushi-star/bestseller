@@ -1,10 +1,11 @@
  <!-- A grey horizontal navbar that becomes vertical on small screens -->
 <ul> 
-  <% if user_signed_in? %>  
+  <% if user_signed_in? %>   
       <li><%= link_to "Home", root_path %></li> 
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#about">About</a></li>
+      <li><%= link_to 'Dashboard', dashboard_path %></li>
       <% if current_user.user_type_id == 1 %>
       <li><%= link_to "Add Product", new_product_path %></li>
       <% end %>

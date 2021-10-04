@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 	def authenticate_user_presence!
 	   redirect_to root_path, notice: "You must sigin " unless user_signed_in?
-    end
+    end 
 
 
     def configure_permitted_parameters
@@ -18,5 +18,6 @@ class ApplicationController < ActionController::Base
     #   favourite_text = current_user.favourites.where(product_id: product_id ).present? ?  "Unfavourite" : "favourite"
     # end 
 
-    # helper_method :favourite_text(product_id)
+    # helper_method :favourite_text(product_id)s
+
 end
