@@ -8,7 +8,7 @@
      <p style="font-size: 20px;color: black;" class="dark head-lg head-xl text-center" align="text-right">Bestseller</p><h6 style="color: purple;">where products matters</h6><%= image_pack_tag "media/images/logo.jpeg", alt:"", height:"48", width:"40", class:"img-fluid" %>
    </div>
    </div>
-    <strong style="float: right !important;"> Total Products: <%= @products.all.count %></strong><br><br>
+    <strong style="float: right !important;"> Total Products: <%= current_user.products.all.count %></strong><br><br>
 
    <h3 class="dark " style="color: #808080">All Listed Products</h3>  
         <div style="overflow-x: auto;">
@@ -19,10 +19,10 @@
 		    <th>Image</th>
 		    <th>Color</th>
 		    <th>Price</th>
-		   <th>Action</th>
+		   <th>Action</th> 
 
 		  </tr>
-
+    <% if @products = current_user.products %>
 		<% @products.each do|pr| %>
 		  <tr>
 		    
@@ -30,7 +30,7 @@
 		    <td><%=pr.description.present? ? pr.description : "N-A" %> </td>
          <% if pr.images.attached? %>
 		    <td><%= image_tag pr.images.first , width: "280px" %> </td>
-		    <% end %>
+		    <% end %> 
 		    <td><%=pr.color.present? ? pr.color : "N-A" %> </td>
 		    <td><%=pr.price.present? ? currency_format(pr.price) : "N-A" %> </td>
 		    <% if can? :update , pr %>
@@ -45,7 +45,7 @@
 		</table>
      </div>
      <%  end %>
-     
+    <% end %> 
      <% if current_user.user_type_id == 2%>
        <!-- For buyer --> 
       <div class="col-md-8">
