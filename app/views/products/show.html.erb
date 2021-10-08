@@ -1,56 +1,12 @@
-<h1 class="dark " style="font-size: 20px;"> Show Details</h1>
+<h1 class="dark " style="font-size: 20px; text-align: center;"> Product  Details</h1>
 
 <% if current_user.present? %> 
-    <div class="col-sm-9"></br>
-	 <div class="row">
-		<div class="col-sm-3 form-group">
-		  <b>Name</b>
-		</div>
-		<div class="col-sm-9 form-group">
+    
+
+
+      <div class="row" style="padding: 40px">
+		<div class="col-sm-9 form-group" style="font-size: 30px">
 		  <%= @product.name.present? ? @product.name.capitalize : 'N-A' %>
-		</div>
-     </div>
-
-     <div class="row">
-		<div class="col-sm-3 form-group">
-		  <b>Description</b>
-		</div>
-		<div class="col-sm-9 form-group">
-		  <%= @product.description.present? ? @product.description.capitalize : 'N-A' %>
-		</div>
-     </div>
-
-     <div class="row">
-		<div class="col-sm-3 form-group">
-		  <b>Price</b>
-		</div>
-		<div class="col-sm-9 form-group">
-		  <%= @product.price.present? ? currency_format(@product.price) : 'N-A' %>
-		</div>
-     </div>
-
-      <div class="row">
-		<div class="col-sm-3 form-group">
-		  <b>Color</b>
-		</div>
-		<div class="col-sm-9 form-group">
-		  <%= @product.color.present? ? @product.color.capitalize : 'N-A' %>
-		</div>
-     </div>
-
-     <div class="row">
-		<div class="col-sm-3 form-group">
-		  <b>Selected Category</b>
-		</div>
-		<div class="col-sm-9 form-group">
-		  <%= @product.category_types.present? ? @product.category_types.capitalize : 'N-A' %>
-		</div>
-     </div>
-
-
-      <div class="row">
-		<div class="col-sm-3 form-group">
-		  <b>Product Image</b>
 		</div>
          <div class="row " style="margin-left: 20px; float:left ;display:block >
            <div class="column">
@@ -58,13 +14,16 @@
              <div class="position-relative mb-3 exclusive-img exclusive-small" >
 				 <% if @product.images.attached? %>
 				 <% @product.images.each do |image|%>
-				 <%= image_tag image ,width: "300px" %>
+				 <%= image_tag image ,width: "500px" %>
 				 <% end %>
 				 <% end %>
 		    </div>
 		   </div>
 		  </div>
+
 		</div>
+		 <%= @product.description.present? ? @product.description.capitalize : 'N-A' %></br>
+		  <%= @product.price.present? ? currency_format(@product.price) : 'N-A' %>
      </div>
 	
   

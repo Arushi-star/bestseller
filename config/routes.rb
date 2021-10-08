@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
-    devise_for :users,
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+    devise_for :users, 
   :path_names => {
     :sign_up => 'sign_up',
     :sign_in => 'sign_in',
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
 	resources :products
 	get "user/dashboard" => "users#dashboard" , as: 'dashboard'
   get "products/like" => "products#like", as: 'like'
+  get "/search" => "products#search" , as: :search_product
   post "/products/new" => "products#create" , as: :save_product
   patch "/products/edit/id" => "products#update" , as: :update_product
   get 'favourites/update' => "favourites#update"

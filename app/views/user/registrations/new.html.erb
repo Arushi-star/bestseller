@@ -2,10 +2,10 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html:{id: 'new_user', :autocomplete => 'off' }) do |f| %>   
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <strong style="color: black">Please select the user type</strong>
+  <strong style="color: black">Please select the user type</strong> 
    <!-- <input type="radio" value="1" name="user_type"><label>Seller</label> -->
    
-   <%= f.radio_button :user_type_id ,'1' %>Seller<span class="required"></span>
+   <%= f.radio_button :user_type_id ,'1' %>Seller <span class="required"></span>
    <%= f.radio_button :user_type_id ,'2' ,autocomplete: "user_type_id" %>Buyer<span class="required"></span>
 
   <%#= f.hidden_field :user_type_id, value: 1 %> 

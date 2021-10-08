@@ -22,6 +22,8 @@
 		   <th>Action</th> 
 
 		  </tr>
+
+
     <% if @products = current_user.products %>
 		<% @products.each do|pr| %>
 		  <tr>
@@ -29,7 +31,7 @@
 		    <td><%=pr.name.present? ? pr.name : "N-A" %> </td>
 		    <td><%=pr.description.present? ? pr.description : "N-A" %> </td>
          <% if pr.images.attached? %>
-		    <td><%= image_tag pr.images.first , width: "280px" %> </td>
+		    <td><%= image_tag pr.images.first , width: "200px" %> </td>
 		    <% end %> 
 		    <td><%=pr.color.present? ? pr.color : "N-A" %> </td>
 		    <td><%=pr.price.present? ? currency_format(pr.price) : "N-A" %> </td>
@@ -42,7 +44,9 @@
 		     <td><%= link_to "Show Details" , product_path(pr.id) %></td>
 		  </tr>
 		<% end %>
+
 		</table>
+
      </div>
      <%  end %>
     <% end %> 
@@ -86,6 +90,9 @@
                 </div>
             <% end %>
             </div>
+
             <%end %>
+        <%= will_paginate @products %>    
    <% end %>  
+
 </div> 

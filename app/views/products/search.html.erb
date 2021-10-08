@@ -1,0 +1,14 @@
+<h1 style="color: dark">Search Results</h1></br>
+
+
+<% @products.each do |pro| %>
+  <%  if pro.present? %>
+    <% if pro.images.attached? %>
+	   <%= image_tag pro.images.first , width: "270px" %>    
+	<% end %> 
+  <% end%>
+  <div style="padding: 30px; font-size: 30px">
+   <%= pro.name.present? ? pro.name : "N-A" %>
+     <button type="button" class="btn btn-primary">Buy Now</button>
+   </div>
+<% end%> 

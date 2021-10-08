@@ -153,6 +153,7 @@ $(document).on('turbolinks:load', function() {
         equalTo:  'Password  does not match',
       },
       'user[user_type_id]':{
+        
         required: 'Please select the user type',
       }
        

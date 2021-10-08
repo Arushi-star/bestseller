@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
-   before_action :authenticate_user_presence!   
+   before_action :authenticate_user_presence! , except: [:search]  
 
   def index 
   end
 
-  def new
+  def new 
     @product = Product.new 
   end 
 
@@ -72,7 +72,8 @@ class ProductsController < ApplicationController
     end
   end
 
-  def product_payment
+  def search
+    @products =  Product.where('name LIKE ? OR category_types LIKE ?', "%" + params[:q]+ "%","%" + params[:q]+ "%" )    
   end
  
 
