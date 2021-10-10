@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products =  Product.where('name LIKE ? OR category_types LIKE ?', "%" + params[:q]+ "%","%" + params[:q]+ "%" )    
+    @products = Product.where('name LIKE ? ', "%" + params[:q]+ "%" )    
   end
  
 

@@ -1,7 +1,7 @@
 <h1 style="color: dark">Search Results</h1></br>
 
-
-<% @products.each do |pro| %>
+<div class="container">
+<% @products.each do |pro| %> 
   <%  if pro.present? %>
     <% if pro.images.attached? %>
 	   <%= image_tag pro.images.first , width: "270px" %>    
@@ -9,6 +9,10 @@
   <% end%>
   <div style="padding: 30px; font-size: 30px">
    <%= pro.name.present? ? pro.name : "N-A" %>
-     <button type="button" class="btn btn-primary">Buy Now</button>
+    <%  if current_user.present? && current_user.user_type_id == 2 %>
+    
+     <%= button_to "Buy Now" ,  checkout_create_path, params: {id: pro.id }, remote: true, :class => "btn btn-primary" , method: :post %>
+     <% end %>
    </div>
 <% end%> 
+</div>

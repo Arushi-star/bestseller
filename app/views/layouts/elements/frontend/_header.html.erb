@@ -11,6 +11,12 @@
       <li><%= link_to "Add Product", new_product_path %></li>
       <% end %>
       <li><%= link_to "LogOut", destroy_user_session_path, method: :delete %></li>
+      <% if current_user.user_type_id == 2%>
+      <form class="d-flex" action="/search">
+        <input class="form-control me-2" type="search"  name= "q" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <% end%>
   <% else %>
       <li><%= link_to "Home", root_path %></li>
       <li><a href="#news">News</a></li>
@@ -18,7 +24,7 @@
       <li><a href="#about">About</a></li>
       <li><%= link_to "Register", new_user_registration_path , :class => 'register_popup'%></li>
       <li><%= link_to "Login", new_user_session_path  %>
-      </li>
+      </li> 
       <form class="d-flex" action="/search">
         <input class="form-control me-2" type="search"  name= "q" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

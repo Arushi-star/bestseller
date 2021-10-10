@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     devise_for :users, 
@@ -21,13 +21,16 @@ Rails.application.routes.draw do
   patch "/products/edit/id" => "products#update" , as: :update_product
   get 'favourites/update' => "favourites#update"
   get 'favourites/favourites_details' => "favourites#favourites_details" , as: :favourites_details
+  post 'checkout/create' => "checkout#create"
+  get 'cancel' => "checkout#cancel" , as: :checkout_cancel
+  get 'success' => "checkout#success" , as: :checkout_success
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :admin , path:'admin' do
     root to: "dashboards#index"
   end
    devise_for :admins,
     :path_names => {
-    :sign_up => 'sign_up',
+    :sign_up => 'sign_up', 
     :sign_in => 'sign_in',
     :sign_out => 'sign_out',
     :password => 'password',
