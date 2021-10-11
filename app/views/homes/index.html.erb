@@ -12,8 +12,9 @@
                     BESTSELLER's new brand JJXX - the newest member of the JACK &amp; JONES family - has scoured the globe for influencers, as it looks to create awareness around the world with its launch campaign.
                 </div><br><br>
     </div><br><br>
+    <h2 style="font-size: 20px; text-align: center; color: red"><b>About Us</b></h2><br>
     <table >
-	  <div class="container">
+	  <div class="container" style="color:  #4653a2">
 	        With a range of more than 20 individual fashion brands, BESTSELLER provides fashion clothing and accessories for women, men, teenagers and children. 
 	        About BESTSELLER
 			Our Company
@@ -21,11 +22,34 @@
 			BESTSELLER is an international, family-owned fashion company with a strong foundation. With a range of more than 20 individual fashion brands, BESTSELLER provides fashion clothing and accessories for women, men, teenagers and children.
 
 			BRANDS
-			Products are marketed and sold under a variety of brands such as JACK & JONES, JACQUELINE DE YONG, MAMALICIOUS, NAME IT, NOISY MAY, OBJECT COLLECTORS ITEM, ONLY, ONLY & SONS, PIECES, SELECTED, VERO MODA, VILA CLOTHES and Y.A.S.  
+			Products are marketed and sold under a variety of brands such as JACK & JONES, JACQUELINE DE YONG, MAMALICIOUS, NAME IT, NOISY MAY, OBJECT COLLECTORS ITEM, ONLY & SONS, PIECES, SELECTED, VERO MODA, VILA CLOTHES and Y.A.S.  
 
 			MARKETS
-			BESTSELLER brands and products are available online, in about 2,600 branded chain stores, 15,000 multi-brand and in department stores across Europe, The Middle East, North America, Latin America, Australia and India. BESTSELLER Fashion Group China is an independent company designing its own collections for more than 7,000 stores in China. 
-	  </div>
+			BESTSELLER brands and products are available online, in about 2,600 branded chain stores, 15,000 multi-brand and in department stores across Europe, The Middle East, North America, Latin America, Australia and India. BESTSELLER Fashion Group China is an independent company designing its own collections for more than 7,000 stores in China.  
+ 
+	
+	  		
+	  </div><br><br>
+
+	  <h3 style="font-size: 40px"><center>Deals of the Day:</center></h3><br><br>
+
+	   <div class=" container" style="font-size: 20px">
+       
+        <% if @products.present? %>
+         <% @products.each do |pr|%>
+           <% if pr.images.attached? %>
+               <%= image_tag pr.images.first ,width: "200px" ,height: "330px" %>	 
+            <% end%>
+         
+           <%= pr.name.present? ? pr.name : "N-A" %> 
+            
+           <%= pr.price.present? ? currency_format(pr.price) : "N-A" %>
+          <% end %>
+        <% end %>
+
+      </div>
+
+
   </table>
 
 

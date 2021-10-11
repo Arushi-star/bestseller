@@ -74,7 +74,7 @@
                      <div class="list-box property-row position-relative">
                        <div class="position-relative mb-3 exclusive-img exclusive-small" >
                          <% if pr.present? && pr.images.attached? %>
-                           <a href="<%=favourites_details_path(id: (pr.id))%>"><%= image_tag pr.images.first ,width:"260", height:"180", alt:"Property Images", class:"radius-10" %></a>
+                           <a href="<%=favourites_details_path(id: (pr.id))%>"><%= image_tag pr.images.first ,width:"260", height:"380", alt:"Property Images", class:"radius-10" %></a>
                           <%else%>
                            <a href="<%=favourites_details_path(id: (pr.id))%>"><%= image_pack_tag "media/images/dummy-product_2.png", width:"260", height:"180", alt:"Property Images", class:"radius-10" %></a> 
                          <%end%>
